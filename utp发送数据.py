@@ -16,6 +16,8 @@ def main():
         utp_socket.sendto(send_input.encode("utf-8"), win_address)
 
         if send_input == 'exit':
+            print('退出聊天')
+            print('哈哈哈')
             exit()
 
     utp_socket.close()
