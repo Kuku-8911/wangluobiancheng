@@ -17,6 +17,7 @@ def main():
         send_message = (utp_recv[0]).decode('utf-8')
 
         if send_message == 'exit':
+            print('退出聊天')
             exit()
 
         print("%s:%s" %(send_address, send_message))
