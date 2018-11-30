@@ -5,28 +5,30 @@ import socket
 class UdpChat(object):
 
     def __init__(self):
-        pass
+        self.udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.udp_socket.bind(("192.168.130.1",8081))
+
+    def chat(self):
+
+        while True:
+            self.send()
+            self.recve()
 
     def send(self):
-        send_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        while True:
-            win_address = ("192.168.130.1", 8080)
-            send_message = input("Plese input the message to send:")
+        win_address = ("192.168.130.1", 8080)
 
-            send_socket.sendto(send_message.encode('utf-8'), win_address)
+        send_message = input("Plese input the message to send:")
+
+        self.udp_socket.sendto(send_message.encode('utf-8'), win_address)
 
     def recve(self):
-        recve_soket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-        while True:
+        recve_message = self.udp_socket.recvfrom(1024)
+        print(recve_message[0].decode('utf-8'))
 
-            ubuntu_address = ("",8081)
-            recve_soket.bind(ubuntu_address)
 
-            recve_soket.recvfrom(1024)
 
 if __name__ == '__main__':
     chat = UdpChat()
 
-    chat.send()
-    chat.recve()
+    chat.chat()
