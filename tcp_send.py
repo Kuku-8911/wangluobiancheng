@@ -15,5 +15,7 @@ def tcp_send():
         # 发送给服务器
         tcp_socket.send(send_message.encode('utf-8'))
 
+    tcp_socket.close()
+
 if __name__ == '__main__':
     tcp_send()
