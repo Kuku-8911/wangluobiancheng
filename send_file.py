@@ -45,7 +45,6 @@ def file_server():
                 print("已经将文件[%s]发送给了%s"% (file_name, address))
 
             except:
-                new_socket.send(("NO FILE").encode('utf-8'))
                 print("没有该文件，请重新输入要下载的文件名")
 
         new_socket.close()
